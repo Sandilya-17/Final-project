@@ -13,7 +13,12 @@ MODELS = {
 }
 name, frac = sys.argv[1], float(sys.argv[2])
 seed = int(sys.argv[3]) if len(sys.argv) > 3 else 42
+# optional overrides for tuning:  LR=5e-5 EPOCHS=10 python finetune.py xlmr 0.1
+lr = float(os.environ.get("LR", "2e-5"))
+epochs = int(os.environ.get("EPOCHS", "4"))
 tag = f"{name}_{frac}" + (f"_s{seed}" if seed != 42 else "")
+if "LR" in os.environ or "EPOCHS" in os.environ:
+    tag += f"_lr{os.environ.get('LR', '2e-5')}_ep{epochs}"
 
 tr = pd.read_csv("data/train.csv").sample(frac=frac, random_state=seed)
 va, te = pd.read_csv("data/validation.csv"), pd.read_csv("data/test.csv")
@@ -40,8 +45,8 @@ def metrics(p):
     return {"acc": accuracy_score(p.label_ids, preds),
             "macro_f1": f1_score(p.label_ids, preds, average="macro")}
 
-args = TrainingArguments(output_dir=f"results/tmp_{tag}", num_train_epochs=4,
-    per_device_train_batch_size=int(os.environ.get('BATCH','8')), per_device_eval_batch_size=16, gradient_accumulation_steps=2, learning_rate=2e-5,
+args = TrainingArguments(output_dir=f"results/tmp_{tag}", num_train_epochs=epochs,
+    per_device_train_batch_size=int(os.environ.get('BATCH','8')), per_device_eval_batch_size=16, gradient_accumulation_steps=2, learning_rate=lr,
     eval_strategy="epoch", save_strategy="no", seed=seed,
     fp16=torch.cuda.is_available(), report_to="none")
 
@@ -50,7 +55,9 @@ trainer = Trainer(model=model, args=args, train_dataset=enc(tr), eval_dataset=en
 trainer.train()
 out = trainer.predict(enc(te))
 preds = np.argmax(out.predictions, axis=1)
-res = {"model": name, "frac": frac, "seed": seed, **metrics(out)}
+val = trainer.evaluate()   # validation score, used to choose settings
+res = {"model": name, "frac": frac, "seed": seed, "lr": lr, "epochs": epochs,
+       "val_macro_f1": val["eval_macro_f1"], **metrics(out)}
 print(res)
 json.dump(res, open(f"results/{tag}.json", "w"))
 pd.DataFrame({"text": te.text, "true": te.label, "pred": preds}).to_csv(f"results/{tag}_preds.csv", index=False)

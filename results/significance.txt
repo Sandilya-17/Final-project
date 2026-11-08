@@ -1,0 +1,16 @@
+Bootstrap 95% confidence intervals (1000 resamples of the test set)
+mbert      acc 0.608 [0.566, 0.652]   macro-F1 0.591 [0.546, 0.634]
+xlmr       acc 0.652 [0.612, 0.693]   macro-F1 0.650 [0.608, 0.691]
+indicbert  acc 0.671 [0.634, 0.708]   macro-F1 0.671 [0.633, 0.709]
+
+Pairwise McNemar exact test (accuracy, same test examples)
+mbert vs xlmr: only-mbert correct=54, only-xlmr correct=78, p=0.0449
+mbert vs indicbert: only-mbert correct=58, only-indicbert correct=92, p=0.0069
+xlmr vs indicbert: only-xlmr correct=50, only-indicbert correct=60, p=0.3909
+
+Error rate by sentence length, indicbert
+                       n  error_rate
+bucket                              
+short (<=8 words)  137.0       0.387
+medium (9-14)      215.0       0.279
+long (15+)         189.0       0.344

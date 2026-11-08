@@ -1,0 +1,1 @@
+{"model": "indicbert", "frac": 1.0, "seed": 1, "lr": 2e-05, "epochs": 4, "val_macro_f1": 0.682909248302349, "acc": 0.66728280961183, "macro_f1": 0.6661263028623902}
