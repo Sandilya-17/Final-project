@@ -35,7 +35,7 @@ Test-set results for models trained on the full training set (seed 42):
 | Model | 10% | 25% | 50% | 100% |
 |---|---|---|---|---|
 | mBERT | 0.389 | 0.529 | 0.544 | 0.591 |
-| XLM-R base | 0.221 | 0.543 | 0.650 | 0.650 |
+| XLM-R base | 0.373 | 0.543 | 0.650 | 0.650 |
 | IndicBERT v2 | 0.214 | 0.577 | 0.663 | 0.671 |
 
 ![Learning curve](results/learning_curve.png)
@@ -45,8 +45,8 @@ Test-set results for models trained on the full training set (seed 42):
 
 - IndicBERT v2 is the best model and beats the best TF-IDF baseline by about 17 macro-F1 points.
 - IndicBERT v2 is the best model at every training size from 25% upward.
-- With 10% of the data, XLM-R and IndicBERT did not learn under the fixed 4-epoch budget.
-- Results come from a single seed, so small gaps (for example IndicBERT vs. XLM-R) should be read with caution.
+- With 10% of the data and default settings, IndicBERT did not learn (macro-F1 0.214); more epochs and a higher learning rate raised it to 0.624.
+- Full-data results over 3 seeds: IndicBERT 0.679, XLM-R 0.654, mBERT 0.583 macro-F1. IndicBERT vs XLM-R is not statistically significant.
 
 ## Training setup
 
