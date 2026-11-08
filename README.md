@@ -130,3 +130,9 @@ If you use this work, please cite:
 ## Contact
 
 **Sandilya** · sandilya939174@gmail.com
+
+## Extended experiments
+
+More seeds, a warmup/trainable-embedding ablation, MuRIL and Telugu-BERT, a label-mapping check and a second
+dataset are described in [EXTENDED_EXPERIMENTS.md](EXTENDED_EXPERIMENTS.md). Start with
+`python verify_labels.py`, then `bash run_extended.sh seeds|ablation|newmodels|dataset2|stats`.

@@ -4,3 +4,6 @@ __pycache__/
 data/*.csv
 results/tmp_*/
 results/*_preds.csv
+results_*/tmp_*/
+results_*/*_preds.csv
+data_*/*.csv

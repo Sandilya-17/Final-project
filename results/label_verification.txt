@@ -1,0 +1,31 @@
+Reference: indic_glue/actsa-sc.te (label names: ['positive', 'negative'])
+split train: 4328 rows, identical sentence at the same position: 0.0%
+split validation: 541 rows, identical sentence at the same position: 0.0%
+split test: 541 rows, identical sentence at the same position: 0.0%
+
+Sentences matched by text: 5280 of 5314 distinct local sentences
+
+Counts (rows: inltkh label id, columns: reference label)
+label_ref    negative  positive
+label_local                    
+7                   0      1470
+8                   0      1397
+9                2413         0
+
+Row shares
+label_ref    negative  positive
+label_local                    
+7                 0.0       1.0
+8                 0.0       1.0
+9                 1.0       0.0
+id 7: 100.0% of matched sentences are 'positive' in the reference
+id 8: 100.0% of matched sentences are 'positive' in the reference
+id 9: 100.0% of matched sentences are 'negative' in the reference
+
+Duplicate check inside inltkh.te
+train sentences that also occur in test: 13 rows, 13 distinct
+train sentences that also occur in validation: 15 rows
+distinct sentences with conflicting labels: 34
+duplicate rows overall: 96 of 5410
+
+How to read this: if each inltkh id lines up (almost) one-to-one with one reference label, the mapping is confirmed for that id. If the ids mix several reference labels, or the mapping differs from 7=positive, 8=negative, 9=neutral, fix class_names.json and the paper's class names.
