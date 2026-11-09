@@ -28,7 +28,7 @@ The mapping was checked in two ways, and the results are not fully consistent:
 
 ### Data quality
 
-13 sentences appear in both train and test, and 34 sentences carry conflicting labels. Evaluating on a de-duplicated test set changes macro-F1 by about 0.002 (`results/dedupe_eval.txt`), so the results below are not materially affected.
+Removing test sentences that also occur in train, carry conflicting labels, or repeat within the test set leaves 523 of 541 test examples (`results/dedupe_eval.txt`). Macro-F1 changes by at most 0.002 for every model (3 seeds), so the results below are not materially affected.
 
 ## Results
 
@@ -59,7 +59,7 @@ Seed 42 is not used for these tests because MuRIL collapsed in that run, which w
 
 ### Training collapses
 
-Some runs predict a single class and score a macro-F1 of about 0.214. Across the experiments this happened in 25 of 135 runs (the 10 runs added in the last round had none):
+Some runs predict a single class and score a macro-F1 of about 0.214. Across the experiments this happened in 25 of 138 runs (the 10 runs added in the last round had none):
 
 | Setting | Collapsed runs | Interpretation |
 |---|---|---|
@@ -155,6 +155,7 @@ python significance_s1.py    # seed-1 McNemar tests
 - Hyperparameters were not tuned per model. Default settings were used for the main table.
 - Word embeddings were frozen for the main experiments because of hardware memory limits.
 - The data-size and ablation studies use 3 seeds; the main table uses 5. Differences among the top four models are within seed-to-seed variation.
+- XLM-R is sensitive to the learning rate: at 3e-5 its full-data macro-F1 drops to 0.559 ± 0.177 (3 seeds), although no run falls below the collapse threshold.
 - Several runs collapse to the majority class (see the table above). Reported means include them unless stated otherwise.
 
 ## Citation
