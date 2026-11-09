@@ -1,0 +1,26 @@
+Dataset: inltkh
+Bootstrap 95% confidence intervals (1000 resamples of the test set)
+mbert      acc 0.599 [0.558, 0.640]   macro-F1 0.579 [0.534, 0.620]
+xlmr       acc 0.675 [0.636, 0.714]   macro-F1 0.669 [0.627, 0.709]
+indicbert  acc 0.667 [0.630, 0.704]   macro-F1 0.666 [0.627, 0.704]
+muril      acc 0.701 [0.664, 0.738]   macro-F1 0.695 [0.655, 0.733]
+telugubert acc 0.684 [0.643, 0.723]   macro-F1 0.682 [0.641, 0.721]
+
+Pairwise McNemar exact test (accuracy, same test examples); 10 comparisons, Bonferroni threshold 0.05/10 = 0.0050  (* = significant after correction)
+mbert vs xlmr: only-mbert correct=43, only-xlmr correct=84, p=0.0003 *
+mbert vs indicbert: only-mbert correct=53, only-indicbert correct=90, p=0.0025 *
+mbert vs muril: only-mbert correct=45, only-muril correct=100, p=0.0000 *
+mbert vs telugubert: only-mbert correct=46, only-telugubert correct=92, p=0.0001 *
+xlmr vs indicbert: only-xlmr correct=58, only-indicbert correct=54, p=0.7770
+xlmr vs muril: only-xlmr correct=41, only-muril correct=55, p=0.1843
+xlmr vs telugubert: only-xlmr correct=50, only-telugubert correct=55, p=0.6965
+indicbert vs muril: only-indicbert correct=38, only-muril correct=56, p=0.0790
+indicbert vs telugubert: only-indicbert correct=36, only-telugubert correct=45, p=0.3742
+muril vs telugubert: only-muril correct=44, only-telugubert correct=35, p=0.3682
+
+Error rate by sentence length, muril
+                       n  error_rate
+bucket                              
+short (<=8 words)  137.0       0.299
+medium (9-14)      215.0       0.279
+long (15+)         189.0       0.323
