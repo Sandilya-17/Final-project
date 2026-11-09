@@ -6,7 +6,6 @@
 #   caffeinate -i bash run_extended.sh seeds       # more seeds: data size + learning rate     (3 models)   ~5-7 h
 #   caffeinate -i bash run_extended.sh ablation    # warmup + trainable embeddings, full data  (3 models)   ~7-9 h
 #   caffeinate -i bash run_extended.sh newmodels   # MuRIL + Telugu-BERT, whole protocol                    ~6-8 h
-#   caffeinate -i bash run_extended.sh dataset2    # second dataset (IndicSentiment), 5 models, fast       ~2-3 h
 #   bash run_extended.sh stats                     # tables, plots, significance tests
 #
 # SEEDS="42" bash run_extended.sh ablation   -> one seed first (about a third of the time), add seeds later.
@@ -47,13 +46,6 @@ stage_ablation() {
     done
   done
 }
-stage_dataset2() {
-  [ -d data_indicsent ] || python prepare_data2.py indicsentiment || exit 1
-  export DATASET=indicsent
-  [ -f results_indicsent/logreg_1.0.json ] || python baseline.py
-  for m in xlmr mbert indicbert muril telugubert; do grid $m; done
-  python analyze.py; python aggregate.py
-}
 stage_stats() {
   python analyze.py; python aggregate.py; python significance.py; python seeds_stats.py
 }
@@ -62,8 +54,7 @@ case "${1:-}" in
   seeds)     stage_seeds ;;
   newmodels) stage_newmodels ;;
   ablation)  stage_ablation ;;
-  dataset2)  stage_dataset2 ;;
   stats)     stage_stats ;;
-  all)       stage_seeds; stage_newmodels; stage_ablation; stage_dataset2; stage_stats ;;
-  *) echo "usage: bash run_extended.sh seeds|ablation|newmodels|dataset2|stats|all"; exit 1 ;;
+  all)       stage_seeds; stage_newmodels; stage_ablation; stage_stats ;;
+  *) echo "usage: bash run_extended.sh seeds|ablation|newmodels|stats|all"; exit 1 ;;
 esac
