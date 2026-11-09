@@ -16,6 +16,11 @@ def save_splits(df, name, seed=0):
     df = df.dropna(subset=["text", "label"]).copy()
     df["text"] = df.text.astype(str).str.strip()
     df = df[df.text != ""].drop_duplicates("text")
+    counts = df.label.astype(str).str.strip().str.lower().value_counts()   # drop missing / very rare labels
+    bad = counts[(counts < 10) | counts.index.isin(["nan", "none", "null", ""])].index
+    if len(bad):
+        print("Dropping rare or invalid labels:", counts[bad].to_dict())
+        df = df[~df.label.astype(str).str.strip().str.lower().isin(bad)]
     classes = sorted(df.label.astype(str).unique())
     df["label"] = df.label.astype(str).map({c: i for i, c in enumerate(classes)})
     train, rest = train_test_split(df, test_size=0.30, stratify=df.label, random_state=seed)

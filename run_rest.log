@@ -12634,3 +12634,37 @@ Traceback (most recent call last):
   File "/Users/sandilya/Downloads/telugu-nlp 2/seeds_stats.py", line 40, in <module>
     open(f"{RES_DIR}/seeds_stats.txt", "w").write("\n".join(out))
 FileNotFoundError: [Errno 2] No such file or directory: 'results_indicsent/seeds_stats.txt'
+[main b4d5cbe] Add extended results: new models, second dataset, seeds, dedup eval
+ 40 files changed, 13996 insertions(+), 98 deletions(-)
+ create mode 100644 dedupe_eval.py
+ create mode 100644 label_annotation.csv
+ create mode 100644 results/dedupe_eval.txt
+ create mode 100644 results/mbert_0.1_s1.json
+ create mode 100644 results/mbert_0.25_s1.json
+ create mode 100644 results/mbert_0.5_s1.json
+ create mode 100644 results/mbert_1.0_s1_lr3e-5_ep4.json
+ create mode 100644 results/mbert_1.0_s1_lr5e-5_ep4.json
+ create mode 100644 results/muril_1.0.json
+ create mode 100644 results/muril_1.0_s1.json
+ create mode 100644 results/muril_1.0_s2.json
+ create mode 100644 results/seeds_stats.txt
+ create mode 100644 results/telugubert_1.0.json
+ create mode 100644 results/telugubert_1.0_s1.json
+ create mode 100644 results/telugubert_1.0_s2.json
+ create mode 100644 results/xlmr_0.1_s1.json
+ create mode 100644 results/xlmr_0.1_s1_lr5e-5_ep10.json
+ create mode 100644 results/xlmr_0.1_s2.json
+ create mode 100644 results/xlmr_0.1_s2_lr5e-5_ep10.json
+ create mode 100644 results/xlmr_0.25_s1.json
+ create mode 100644 results/xlmr_0.25_s2.json
+ create mode 100644 results/xlmr_0.5_s1.json
+ create mode 100644 results/xlmr_0.5_s2.json
+ create mode 100644 results/xlmr_1.0_s1_lr3e-5_ep4.json
+ create mode 100644 results/xlmr_1.0_s1_lr5e-5_ep4.json
+ create mode 100644 results/xlmr_1.0_s2_lr3e-5_ep4.json
+ create mode 100644 results/xlmr_1.0_s2_lr5e-5_ep4.json
+ create mode 100644 runA.log
+ create mode 100644 run_rest.log
+ create mode 100644 run_rest.sh
+fatal: unable to access 'https://github.com/Sandilya-17/Final-project.git/': Could not resolve host: github.com
+=== ALL DONE ===

@@ -1,0 +1,1 @@
+{"model": "mbert", "frac": 0.5, "seed": 2, "lr": 2e-05, "epochs": 4, "warmup": 0.0, "emb_frozen": true, "dataset": "inltkh", "val_macro_f1": 0.5782732687260246, "acc": 0.5619223659889094, "macro_f1": 0.5472647087756642}

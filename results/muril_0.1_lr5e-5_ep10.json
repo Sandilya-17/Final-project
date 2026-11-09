@@ -1,0 +1,1 @@
+{"model": "muril", "frac": 0.1, "seed": 42, "lr": 5e-05, "epochs": 10, "warmup": 0.0, "emb_frozen": true, "dataset": "inltkh", "val_macro_f1": 0.642055195289207, "acc": 0.634011090573013, "macro_f1": 0.6211620359185068}
