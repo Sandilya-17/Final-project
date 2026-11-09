@@ -46,7 +46,7 @@ Test macro-F1, mean ± standard deviation over seeds 42, 1, 2, 3, 4:
 | IndicBERT v2 | 0.679 ± 0.012 | |
 | Telugu-BERT | 0.688 ± 0.011 | |
 
-**Summary:** Telugu-BERT, IndicBERT v2, XLM-R and MuRIL (excluding its collapsed run) form a top group at about 0.66 to 0.69 macro-F1 and are not statistically distinguishable. mBERT is clearly lower, and all five transformers beat the TF-IDF baselines by 16 or more macro-F1 points. We do not claim a single best model.
+**Summary:** Telugu-BERT, IndicBERT v2, XLM-R and MuRIL (excluding its collapsed run) form a top group at about 0.66 to 0.69 macro-F1 and are not statistically distinguishable. mBERT is clearly lower, and the top group beats the best TF-IDF baseline by about 16 to 19 macro-F1 points (mBERT by about 8). We do not claim a single best model.
 
 ### Significance (seed 1)
 
@@ -67,6 +67,8 @@ Some runs predict a single class and score a macro-F1 of about 0.214. Across the
 | Full data, learning rate 5e-5 | 5 (mBERT 2, XLM-R 2, Telugu-BERT 1) | learning rate too high |
 | XLM-R, 5e-5 with 0.1 warmup | 3 of 3 | warmup does not fix the high-learning-rate collapse |
 | MuRIL, full data, default | 1 of 5 (seed 42) | instability |
+| MuRIL, 25% of the data, default | 2 of 3 | instability |
+| 10% of the data at 5e-5 (MuRIL, XLM-R) | 2 | high learning rate on little data |
 
 At 10% of the data, longer training (5e-5, 10 epochs) rescues IndicBERT (0.613 ± 0.010, n = 3), but MuRIL stays unstable (0.480 ± 0.231, n = 3). Treat collapsed runs as optimisation failures, not as a property of the model.
 
