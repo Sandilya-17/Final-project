@@ -1,0 +1,1 @@
+{"model": "telugubert", "frac": 1.0, "seed": 1, "lr": 2e-05, "epochs": 4, "warmup": 0.0, "emb_frozen": true, "dataset": "indicsent", "val_macro_f1": 0.9129842615012107, "acc": 0.9523809523809523, "macro_f1": 0.9523488045007032}

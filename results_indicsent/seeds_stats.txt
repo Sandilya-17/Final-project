@@ -1,0 +1,49 @@
+Dataset: indicsent
+Model         acc (mean +/- std)    macro-F1 (mean +/- std)   n_seeds   seeds
+mbert         0.876 +/- 0.011      0.876 +/- 0.011          3         [1, 2, 42]
+xlmr          0.898 +/- 0.046      0.897 +/- 0.047          3         [1, 2, 42]
+indicbert     0.968 +/- 0.002      0.968 +/- 0.003          3         [1, 2, 42]
+muril         0.944 +/- 0.007      0.944 +/- 0.008          3         [1, 2, 42]
+telugubert    0.957 +/- 0.011      0.957 +/- 0.011          3         [1, 2, 42]
+
+Pairs: seeds where A has the higher macro-F1, and exact McNemar test per seed (needs the *_preds.csv files)
+mbert vs xlmr: mbert higher in 1/3 seeds, mean diff -0.021
+    seed 1: only-mbert correct=7, only-xlmr correct=18, p=0.043
+    seed 2: only-mbert correct=23, only-xlmr correct=13, p=0.132
+    seed 42: only-mbert correct=6, only-xlmr correct=20, p=0.009
+mbert vs indicbert: mbert higher in 0/3 seeds, mean diff -0.092
+    seed 1: only-mbert correct=1, only-indicbert correct=22, p=0.000
+    seed 2: only-mbert correct=2, only-indicbert correct=21, p=0.000
+    seed 42: only-mbert correct=3, only-indicbert correct=27, p=0.000
+mbert vs muril: mbert higher in 0/3 seeds, mean diff -0.068
+    seed 1: only-mbert correct=5, only-muril correct=22, p=0.002
+    seed 2: only-mbert correct=5, only-muril correct=19, p=0.007
+    seed 42: only-mbert correct=7, only-muril correct=23, p=0.005
+mbert vs telugubert: mbert higher in 0/3 seeds, mean diff -0.081
+    seed 1: only-mbert correct=2, only-telugubert correct=20, p=0.000
+    seed 2: only-mbert correct=3, only-telugubert correct=17, p=0.003
+    seed 42: only-mbert correct=2, only-telugubert correct=26, p=0.000
+xlmr vs indicbert: xlmr higher in 0/3 seeds, mean diff -0.071
+    seed 1: only-xlmr correct=3, only-indicbert correct=13, p=0.021
+    seed 2: only-xlmr correct=4, only-indicbert correct=33, p=0.000
+    seed 42: only-xlmr correct=1, only-indicbert correct=11, p=0.006
+xlmr vs muril: xlmr higher in 0/3 seeds, mean diff -0.046
+    seed 1: only-xlmr correct=6, only-muril correct=12, p=0.238
+    seed 2: only-xlmr correct=8, only-muril correct=32, p=0.000
+    seed 42: only-xlmr correct=7, only-muril correct=9, p=0.804
+xlmr vs telugubert: xlmr higher in 0/3 seeds, mean diff -0.059
+    seed 1: only-xlmr correct=6, only-telugubert correct=13, p=0.167
+    seed 2: only-xlmr correct=8, only-telugubert correct=32, p=0.000
+    seed 42: only-xlmr correct=1, only-telugubert correct=11, p=0.006
+indicbert vs muril: indicbert higher in 3/3 seeds, mean diff +0.025
+    seed 1: only-indicbert correct=7, only-muril correct=3, p=0.344
+    seed 2: only-indicbert correct=6, only-muril correct=1, p=0.125
+    seed 42: only-indicbert correct=9, only-muril correct=1, p=0.021
+indicbert vs telugubert: indicbert higher in 2/3 seeds, mean diff +0.012
+    seed 1: only-indicbert correct=4, only-telugubert correct=1, p=0.375
+    seed 2: only-indicbert correct=6, only-telugubert correct=1, p=0.125
+    seed 42: only-indicbert correct=4, only-telugubert correct=4, p=1.000
+muril vs telugubert: muril higher in 0/3 seeds, mean diff -0.013
+    seed 1: only-muril correct=4, only-telugubert correct=5, p=1.000
+    seed 2: only-muril correct=3, only-telugubert correct=3, p=1.000
+    seed 42: only-muril correct=1, only-telugubert correct=9, p=0.021

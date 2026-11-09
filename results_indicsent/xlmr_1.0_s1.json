@@ -1,0 +1,1 @@
+{"model": "xlmr", "frac": 1.0, "seed": 1, "lr": 2e-05, "epochs": 4, "warmup": 0.0, "emb_frozen": true, "dataset": "indicsent", "val_macro_f1": 0.9565217391304348, "acc": 0.922077922077922, "macro_f1": 0.9218303504286359}
