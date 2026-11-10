@@ -23,7 +23,7 @@ Telugu is spoken by over 80 million people but remains under-resourced in NLP. T
 
 The mapping was checked in two ways, and the results are not fully consistent:
 
-- A manual annotation of 54 sentences (`label_annotation.csv`, `latest_labels.csv`, key in `label_key.csv`) agrees with the Hugging Face mapping for ids 7 (mostly positive) and 8 (mostly negative). Id 9 (neutral) is noisy: about half of the annotated neutral sentences were judged neutral by the annotator.
+- A manual annotation of 90 sentences (30 per class; `label_annotation.csv`, `latest_labels.csv`, key in `label_key.csv`; one annotator who saw only the sentence) agrees with the Hugging Face mapping on 61 of 90 sentences (68%, Cohen's kappa 0.52). Agreement is 22/30 for id 7 (positive) and 22/30 for id 8 (negative), but only 17/30 for id 9 (neutral): 11 of the 30 neutral sentences were judged negative. The neutral class is therefore noisy, which may also limit achievable accuracy.
 - An automatic comparison with `actsa-sc.te` by sentence text (`verify_labels.py`, `results/label_verification.txt`) matched most sentences but gave a conflicting mapping (ids 7 and 8 both positive). We could not resolve this and treat the manual check as the stronger evidence. Per-class results for *neutral* should be read with caution.
 
 ### Data quality
@@ -151,7 +151,7 @@ python significance_s1.py    # seed-1 McNemar tests
 ## Limitations
 
 - One dataset and one language, with short texts.
-- The *neutral* class is noisy. The label mapping was checked on a small manual sample (54 sentences, one annotator), and an automatic check against `actsa-sc.te` disagreed.
+- The *neutral* class is noisy. The label mapping was checked on a small manual sample (90 sentences, one annotator, kappa 0.52 against the dataset labels), and an automatic check against `actsa-sc.te` disagreed.
 - Hyperparameters were not tuned per model. Default settings were used for the main table.
 - Word embeddings were frozen for the main experiments because of hardware memory limits.
 - The data-size and ablation studies use 3 seeds; the main table uses 5. Differences among the top four models are within seed-to-seed variation.
