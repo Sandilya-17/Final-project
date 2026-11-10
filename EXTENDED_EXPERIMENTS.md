@@ -9,7 +9,6 @@ Everything below is additive: the original files, commands and results keep work
 | Single seed for data-size / learning-rate studies | `bash run_extended.sh seeds` | mean ± std tables, error-bar plots |
 | No warmup, frozen embeddings | `bash run_extended.sh ablation` | ablation table in `aggregate_tables.md` |
 | Only three models | `bash run_extended.sh newmodels` (MuRIL, L3Cube Telugu-BERT) | same tables, 5 models |
-| One dataset | `bash run_extended.sh dataset2` | `results_indicsent/` |
 | Tables for the paper | `bash run_extended.sh stats` | `results/aggregate_tables.md`, `learning_curve_seeds.png`, `lr_sensitivity_seeds.png`, `significance.txt`, `seeds_stats.txt` |
 
 ## Order
@@ -33,7 +32,6 @@ became 8). With the default `BATCH=8` nothing changes.
 
 ## Second dataset
 
-`prepare_data2.py indicsentiment` builds `data_indicsent/` from `ai4bharat/IndicSentiment` (Telugu).
 It is binary, review-domain and machine-translated, so it tests whether the ranking survives a domain and
 label-set change. It is not a native Telugu three-class set. To use another Telugu dataset:
 `python prepare_data2.py csv file.csv myname` (columns `text`, `label`), then `DATASET=myname ...`.
